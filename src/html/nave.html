@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="es"><head>
+<html lang="es">
+<head>
     <meta charset="UTF-8">
     <title>Detalles de la Nave Espacial</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/background.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/background.css">
 </head>
 <body>
 <h1>Detalles de la Nave Espacial</h1>
@@ -14,23 +15,6 @@
     <p>Fabricante: undefined</p>
 </div>
 
-<script>
-    const urlParams = new URLSearchParams(window.location.search);
-    const starshipId = urlParams.get('id');
-
-    fetch(`https://swapi.dev/api/starships/${starshipId}/`)
-        .then(response => response.json())
-        .then(starshipData => {
-            const starshipDetailsContainer = document.getElementById("starshipDetails");
-            starshipDetailsContainer.innerHTML = `
-                    <h2>${starshipData.name}</h2>
-                    <p>Modelo: ${starshipData.model}</p>
-                    <p>Fabricante: ${starshipData.manufacturer}</p>
-                `;
-        })
-        .catch(error => {
-            console.log('Hubo un problema con la solicitud:', error);
-        });
-</script>
-
-</body></html>
+<script src="js/nave.js"></script>
+</body>
+</html>

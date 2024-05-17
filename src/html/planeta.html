@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="es"><head>
+<html lang="es">
+<head>
     <meta charset="UTF-8">
     <title>Detalles del Planeta</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/background.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/background.css">
 </head>
 <body>
 <h1>Detalles del Planeta</h1>
@@ -14,23 +15,6 @@
     <p>Terreno: undefined</p>
 </div>
 
-<script>
-    const urlParams = new URLSearchParams(window.location.search);
-    const planetId = urlParams.get('id');
-
-    fetch(`https://swapi.dev/api/planets/${planetId}/`)
-        .then(response => response.json())
-        .then(planetData => {
-            const planetDetailsContainer = document.getElementById("planetDetails");
-            planetDetailsContainer.innerHTML = `
-                    <h2>${planetData.name}</h2>
-                    <p>Clima: ${planetData.climate}</p>
-                    <p>Terreno: ${planetData.terrain}</p>
-                `;
-        })
-        .catch(error => {
-            console.log('Hubo un problema con la solicitud:', error);
-        });
-</script>
-
-</body></html>
+<script src="js/planeta.js"></script>
+</body>
+</html>
