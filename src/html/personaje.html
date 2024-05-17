@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+    <meta charset="UTF-8">
+    <title>Detalles del Personaje</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/background.css">
+</head>
+<body>
+<h1>Detalles del Personaje</h1>
+
+<div id="characterDetails">
+    <h2>undefined</h2>
+    <p>Altura: undefined</p>
+    <p>Peso: undefined</p>
+    <!-- Agrega más detalles según tus necesidades -->
+</div>
+
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const characterId = urlParams.get('id');
+
+    fetch(`https://swapi.dev/api/people/${characterId}/`)
+        .then(response => response.json())
+        .then(characterData => {
+            const characterDetailsContainer = document.getElementById("characterDetails");
+            characterDetailsContainer.innerHTML = `
+                    <h2>${characterData.name}</h2>
+                    <p>Altura: ${characterData.height}</p>
+                    <p>Peso: ${characterData.mass}</p>
+                    <!-- Agrega más detalles según tus necesidades -->
+                `;
+        })
+        .catch(error => {
+            console.log('Hubo un problema con la solicitud:', error);
+        });
+</script>
+
+</body></html>

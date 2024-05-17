@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+    <meta charset="UTF-8">
+    <title>Detalles del Vehículo</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/background.css">
+</head>
+<body>
+<h1>Detalles del Vehículo</h1>
+
+<div id="vehicleDetails">
+    <h2>undefined</h2>
+    <p>Modelo: undefined</p>
+    <p>Fabricante: undefined</p>
+</div>
+
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const vehicleId = urlParams.get('id');
+
+    fetch(`https://swapi.dev/api/vehicles/${vehicleId}/`)
+        .then(response => response.json())
+        .then(vehicleData => {
+            const vehicleDetailsContainer = document.getElementById("vehicleDetails");
+            vehicleDetailsContainer.innerHTML = `
+                    <h2>${vehicleData.name}</h2>
+                    <p>Modelo: ${vehicleData.model}</p>
+                    <p>Fabricante: ${vehicleData.manufacturer}</p>
+                `;
+        })
+        .catch(error => {
+            console.log('Hubo un problema con la solicitud:', error);
+        });
+</script>
+
+</body></html>
